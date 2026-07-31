@@ -5,3 +5,5 @@
 
 [Explainer on how I2C devices work. It's a critical concept for solderless hardware hackathons.](https://learn.adafruit.com/working-with-i2c-devices/overview)
 
+https://learn.adafruit.com/esp32-s3-reverse-tft-feather/overview
+
