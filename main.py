@@ -59,7 +59,7 @@ font = pygame.font.Font(None, 72)
 black = 0, 0, 0
 white = 255, 255, 255
 
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
 pygame.display.set_caption("My First Pygame")
 
 clock = pygame.time.Clock()
