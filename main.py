@@ -83,7 +83,7 @@ while waiting:
     screen.fill(white)
 
     title = font.render("PONG", True, black)
-    prompt = small_font.render("Press w,s, up arrow or down arrow key to start", True, black)
+    prompt = small_font.render("Press w,s, up arrow or down arrow key to start and r to restart and q to quit", True, black)
 
     screen.blit(title, title.get_rect(center=(WIDTH//2, HEIGHT//2 - 40)))
     screen.blit(prompt, prompt.get_rect(center=(WIDTH//2, HEIGHT//2 + 40)))
@@ -119,6 +119,27 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_q:   
+                running = False   
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                # Reset scores
+                left_score = 0
+                right_score = 0
+
+                # Reset paddles
+                left_paddle.y = HEIGHT // 2 - PAD_HEIGHT // 2
+                right_paddle.y = HEIGHT // 2 - PAD_HEIGHT // 2
+
+                # Reset ball
+                ball_x = WIDTH // 2
+                ball_y = HEIGHT // 2
+
+                # Give ball a random direction
+                ball_speed_x = 7 * random.choice([-1, 1])
+                ball_speed_y = 5 * random.choice([-1, 1])
     #gameloop
 
     #controls
