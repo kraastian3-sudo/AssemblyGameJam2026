@@ -66,6 +66,52 @@ clock = pygame.time.Clock()
 
 running = True
 
+font = pygame.font.Font(None, 80)
+small_font = pygame.font.Font(None, 40)
+
+waiting = True
+
+while waiting:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+        if event.type == pygame.KEYDOWN:
+            waiting = False
+
+    screen.fill(white)
+
+    title = font.render("PONG", True, black)
+    prompt = small_font.render("Press w,s, up arrow or down arrow key to start", True, black)
+
+    screen.blit(title, title.get_rect(center=(WIDTH//2, HEIGHT//2 - 40)))
+    screen.blit(prompt, prompt.get_rect(center=(WIDTH//2, HEIGHT//2 + 40)))
+
+    ball_x += ball_speed_x
+    ball_y += ball_speed_y
+
+    if ball_y - BALL_RADIUS <= 0:
+        ball_speed_y *= -1
+
+    if ball_y + BALL_RADIUS >= HEIGHT:
+        ball_speed_y *= -1
+
+    if ball_x - BALL_RADIUS <= 0:
+        ball_x = BALL_RADIUS
+        ball_speed_x *= -1
+
+    if ball_x + BALL_RADIUS >= WIDTH:
+        ball_x = WIDTH - BALL_RADIUS
+        ball_speed_x *= -1
+
+    pygame.draw.rect(screen, (black), left_paddle)
+    pygame.draw.rect(screen, (black), right_paddle)
+    pygame.draw.circle(screen, (black), (ball_x, ball_y), BALL_RADIUS)
+
+    pygame.display.flip()
+    clock.tick(60)
+
 while running:
 
     # Check events
@@ -102,7 +148,7 @@ while running:
     # Keep paddle on screen
     left_paddle.y = max(0, min(left_paddle.y, HEIGHT - PAD_HEIGHT))   
 
-            # Keep paddle on screen
+    # Keep paddle on screen
     right_paddle.y = max(0, min(right_paddle.y, HEIGHT - PAD_HEIGHT))     
 
 
@@ -147,8 +193,12 @@ while running:
     left_text = font.render(str(left_score), True, (black))
     right_text = font.render(str(right_score), True, (black))
 
+
+    # text on the screen
     screen.blit(left_text, (WIDTH // 2 - 100, 30))
     screen.blit(right_text, (WIDTH // 2 + 70, 30))
+
+    # Moving parts
 
     pygame.draw.rect(screen, (black), left_paddle)
     pygame.draw.rect(screen, (black), right_paddle)
