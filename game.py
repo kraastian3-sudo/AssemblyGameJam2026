@@ -63,7 +63,7 @@ def init():
 def draw(canvas):
     global paddle1_pos, paddle2_pos, ball_pos, ball_vel, l_score, r_score
            
-    canvas.fill(BLACK)
+    canvas.fill(WHITE)
     pygame.draw.line(canvas, WHITE, [WIDTH / 2, 0],[WIDTH / 2, HEIGHT], 1)
     pygame.draw.line(canvas, WHITE, [PAD_WIDTH, 0],[PAD_WIDTH, HEIGHT], 1)
     pygame.draw.line(canvas, WHITE, [WIDTH - PAD_WIDTH, 0],[WIDTH - PAD_WIDTH, HEIGHT], 1)

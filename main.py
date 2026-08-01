@@ -57,6 +57,7 @@ right_score = 0
 font = pygame.font.Font(None, 72)
 
 black = 0, 0, 0
+white = 255, 255, 255
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My First Pygame")
@@ -140,18 +141,18 @@ while running:
         ball_speed_x *= random.choice([-1, 1])
 
     # Fill background
-    screen.fill((black))
+    screen.fill((white))
 
     # scores
-    left_text = font.render(str(left_score), True, (255, 255, 255))
-    right_text = font.render(str(right_score), True, (255, 255, 255))
+    left_text = font.render(str(left_score), True, (black))
+    right_text = font.render(str(right_score), True, (black))
 
     screen.blit(left_text, (WIDTH // 2 - 100, 30))
     screen.blit(right_text, (WIDTH // 2 + 70, 30))
 
-    pygame.draw.rect(screen, (255, 255, 255), left_paddle)
-    pygame.draw.rect(screen, (255, 255, 255), right_paddle)
-    pygame.draw.circle(screen, (255, 255, 255), (ball_x, ball_y), BALL_RADIUS)
+    pygame.draw.rect(screen, (black), left_paddle)
+    pygame.draw.rect(screen, (black), right_paddle)
+    pygame.draw.circle(screen, (black), (ball_x, ball_y), BALL_RADIUS)
 
     # Update screen
     pygame.display.flip()
